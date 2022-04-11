@@ -20,8 +20,36 @@ input array? How would you handle this?
 
 */
 
+//input arr
+//output arr 
+  //where element is integer 
+    //where all elements are multiplied except one
+
+//create output arr
+//for loop
+  //create new arr (copy of array)
+  //splice out i
+  //multiply
+  //push
+
 const getAllProducts = array => {
-  
+  let output = [];
+
+  for (let i = 0; i < array.length; i++) {
+
+    let copy = [...array];
+    copy.splice(i, 1)
+
+    let hold = copy[0];
+    for (let j = 1; j < copy.length; j++) {
+      hold *= copy[j]
+    }
+
+    output.push(hold);
+  }
+  return output;
 };
+
+console.log(getAllProducts([1, 7, 3, 4]))
 
 module.exports = {getAllProducts};

@@ -28,8 +28,49 @@ function Node(val) {
   this.next = null;
 }
 
-const linkedListRemove = (ll, val) => {
+//input ll and value
+//output value
+//but want to remove first instance of linked list
 
+//check to see if head is linked list
+  //if yes reassign and remove
+  //return
+
+//declare past
+//declare current
+//use a while loop
+  //if current's value === val
+    //if val.next isnt null
+      //reassign past to current's next
+      //return
+    //else reassign past's next to null
+
+const linkedListRemove = (ll, val) => {
+  if (ll.head.val === val) {
+    const current = ll.head;
+    const newHead = ll.head.next;
+    ll.head = newHead;
+    return current;
+  }
+  else {
+    let past = ll.head;
+    let current = ll.head.next;
+    while (current) {
+      if (current.val === val) {
+        if (current.next !== null) {
+          past.next = current.next;
+          return current;
+        }
+        else {
+          past.next = null;
+          return current;
+        }
+      }
+      past = current;
+      current = current.next;
+    }
+  }
+  return undefined;
 };
 
 
@@ -43,7 +84,7 @@ Given a linked list:
  
 ('a' -> 'b' -> 'd' -> 'c' -> 'd')
  
- And given a value, 'd', the evaluated result of calling your function should be:
+ And given a.val, 'd', the evaluated result of calling your function should be:
 
  ('a' -> 'b' -> 'c')
 
