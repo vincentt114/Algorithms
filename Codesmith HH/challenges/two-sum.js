@@ -17,9 +17,17 @@
 */
 
 
-const twoSum = (arr, target) => { 
+var twoSum = function(nums, target) {
+  const cache = {};
+  for (let i = 0; i < nums.length; i++) {
+      const complement = target - nums[i];
+      if (cache.hasOwnProperty(complement)) return [cache[complement], i];
+      else cache[nums[i]] = i;
+  }
+  return cache
+};
 
-}
+console.log(twoSum([2, 5, 11, 15], 7))
 
 /*
 Extension:

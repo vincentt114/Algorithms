@@ -19,8 +19,32 @@ maxDepth([4, [0, [[3], 2]], 2, 7, 8, [1]]) -> 4 (maximum depth is 4 levels)
 
 */
 
+//input array 
+//output integer
+  //where integer is equal to the levels of nested
+
+//edge case for 0 length or non nested equal to 0
+//let output = 1
+//for loop
+//RECURSION
+  //if 
+  //check to see if element is array if yes recurse (use tail end recursion to keep check?)
+
 const maxDepth = arr => {
+
+  let output = 1;
+
+  const recurse = (arr, nesting) => {
+    if (nesting > output) output = nesting;
+    for (let i = 0; i < arr.length; i++) {
+      if (Array.isArray(arr[i])) {
+        recurse(arr[i], nesting + 1);
+      }
+    }
+  }
   
+  recurse(arr, 1);
+  return output;
 };
 
 module.exports = {maxDepth};
