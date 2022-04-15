@@ -21,7 +21,7 @@ describe('needleInHaystack tests', () => {
   });
 });
 
-xdescribe('needleInHaystackWithWildcards tests', () => {
+describe('needleInHaystackWithWildcards tests', () => {
   it('handles substring longer than string', () => {
     expect(needleInHaystackWithWildcards('abc', 'abcde')).toBe(false);
     expect(needleInHaystackWithWildcards('abc', 'feed')).toBe(false);

@@ -26,7 +26,7 @@ describe('mode test', () => {
   });
 });
 
-xdescribe('modeNested test', () => {
+describe('modeNested test', () => {
   let arr;
   it('handles non-nested arrays', () => {
     arr = [3];

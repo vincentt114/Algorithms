@@ -19,9 +19,21 @@ nestedArrMax(arrNested);
 */
 
 const nestedArrMax = arr => {
+  let output;
+  const helper = (arr) => {
+    for (let i = 0; i < arr.length; i++) {
+      if (Array.isArray(arr[i])) helper(arr[i]);
+      if (!output) output = arr[i];
+      if (arr[i] > output) output = arr[i]
+    }
+  }
 
+  helper(arr)
+
+  return output;
 };
 
+console.log(nestedArrMax([1, [3, [10], 6]]))
 
 /*
 
@@ -47,7 +59,22 @@ nestedArrMaxLevel(arrNested, 3);
 */
 
 const nestedArrMaxLevel = (arr, level) => {
+  
+  let max;
+  if (arr.length) max = -Infinity
+  else max = undefined;
 
+  arr.forEach(el => {
+    if (Array.isArray(el)) {
+      if (level === 1) return max;
+      max = Math.max(nestedArrMaxLevel(el, level - 1), max)
+    }
+    if (!max || el > max) max = el;
+  });
+
+  return max;
 };
+
+console.log(nestedArrMaxLevel([1, [3, [10], 6]], 1))
 
 module.exports = {nestedArrMax, nestedArrMaxLevel};

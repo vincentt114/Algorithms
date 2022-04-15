@@ -24,8 +24,36 @@ After sorting, think about how to merge the intervals together.
 
 */
 
+//input array of arrays
+//output array of arrays
+  //where element-arrays are merged where
+    //if succeededing element array [1] overlaps with preceding element array [0]
+
+//sort the input array
+//create output array
+//for loop through the sorted array
+  //if i is 0 push into output array
+  //else if index of 1 of output last element-array is greater than i's first index of 0 then merge
+  //else push
+//return output
+
 const mergeRanges = intervals => {
-  
+  let sorted = intervals.sort((a, b) => {
+    return a[0] - b[0];
+  })
+
+  const output = [];
+  for (let i = 0; i < sorted.length; i++) {
+    if (i === 0) output.push(sorted[i]);
+    else if (output[output.length - 1][1] >= sorted[i][0]) {
+      if (output[output.length - 1][1] < sorted[i][1]) output[output.length - 1][1] = sorted[i][1]
+    }
+    else output.push(sorted[i]);
+  }
+
+  return output;
 };
+
+console.log(mergeRanges([[0, 4], [1, 3], [2, 4], [0, 5]]))
 
 module.exports = {mergeRanges};
