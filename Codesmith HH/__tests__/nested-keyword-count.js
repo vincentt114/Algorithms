@@ -39,7 +39,7 @@ describe('keywordCount test', () => {
   });
 });
 
-xdescribe('keywordMode test', () => {
+describe('keywordMode test', () => {
   let arr;
   it('finds keywords in a non-nested array', () => {
     arr = ['bye', 'cool', 'bye', 'bye'];
