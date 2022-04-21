@@ -23,8 +23,37 @@ function Node(value) {
  *
  */
 
+//input head
+
+//create a cache
+//create a order and initialize to 0
+//sort through the entire linked list
+  //fill out the cache so that the order is the key and the ll is the value
+
+//iteriate through the cache using the order to reassign 
+
 const reverseLinkedList = head => {
 
+  if (head === null) return null;
+  if (head.next === null) return head;
+
+  const cache = {};
+  let initialOrder = 0, current = head;
+
+  while (current) {
+    cache[initialOrder] = current;
+    initialOrder++;
+    current = current.next;
+  }
+  initialOrder--;
+  const max = initialOrder;
+
+  while (initialOrder >= 0) {
+    if (initialOrder === 0) cache[0].next = null;
+    else cache[initialOrder].next = cache[initialOrder - 1];
+    initialOrder--;
+  }
+  return cache[max]
 };
 
 module.exports = { Node, reverseLinkedList }

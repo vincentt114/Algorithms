@@ -24,7 +24,7 @@ describe('reverseArray test', () => {
   });
 });
 
-xdescribe('reverseSentence test', () => {
+describe('reverseSentence test', () => {
   let sentence, reversed;
   it('returns a single word unchanged', () => {
     sentence = 'hello';

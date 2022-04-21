@@ -10,15 +10,18 @@
 function pow(base, power) {
   // for a recursive approach remember to write your base case
   // write your recursive logic here
+  return base**power
 }
 
 /**
  * Extension: Use recursion to solve the problem in O(n) time complexity -> Linear time complexity
  */
 
-function powRecurse(base, power) {
+function powRecurse(base, power, output = 1) {
   // for a recursive approach remember to write your base case
   // write your recursive logic here
+  if (power === 0) return output;
+  return powRecurse(base, power - 1, output*base);
 }
 
 module.exports = { pow, powRecurse };
