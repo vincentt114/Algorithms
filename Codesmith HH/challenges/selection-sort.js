@@ -13,9 +13,34 @@ whole array, the array will end up being sorted.
 
 */
 
+//input array
+//output same array
+  //sorted from lowest to highest using 'selection sort'
+
+//create a lowest var
+//NESTED FOR LOOP
+  //first loop
+    //lowest assigned to element at [i]
+    //second loop (j = i + 1)
+      //if element at j < lowest, then reassign lowest to element at j
+    //if lowest < element at i
+      //swap them
+
 const selectionSort = array => {
-  
+
+  for (let i = 0; i < array.length - 1; i++) {
+    let lowest = i;
+    for (let j = i + 1; j < array.length; j++) {
+      if (array[lowest] > array[j]) lowest = j;
+    }
+    let temp = array[i];
+    array[i] = array[lowest];
+    array[lowest] = temp;
+  }
+  return array;
 };
+
+console.log(selectionSort([7, 1, 1, 7]))
 
 /*
 

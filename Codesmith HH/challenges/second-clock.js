@@ -28,14 +28,33 @@ Hint: look up setInterval and clearInterval.
 
 */
 
+//within constructor
+  //create a time var and initialize it to 1
+  //create a func and initialize to null
+//with start
+  //reassign func to setInterval with logic of cb per sec and incrementing time
+//stop
+  //clear interval and reset time
+
 class SecondClock {
   constructor(cb) {
     this.cb = cb;
+    this.time = 1;
+    this.func = null
   }
 
-  start() {}
+  start() {
+    this.func = setInterval(() => {
+      this.cb(this.time);
+      this.time++;
+      if (this.time === 61) this.time = 1;
+    }, 1000);
+  }
 
-  stop() {}
+  stop() {
+    clearInterval(this.func);
+    this.time = 1;
+  }
 }
 
 module.exports = { SecondClock };

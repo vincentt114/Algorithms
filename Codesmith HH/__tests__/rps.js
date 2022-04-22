@@ -15,7 +15,7 @@ describe('rps test', () => {
   });
 });
 
-xdescribe('passwords test', () => {
+describe('passwords test', () => {
   it('handles password combinations', () => {
     expect(passwords('ab', 1)).toEqual(['a', 'b']);
     expect(passwords('abxy', 2))
