@@ -25,8 +25,34 @@ of 6.
 
 */
 
+//input array, target
+//output integer
+
+//where output integer is the lowest absolute difference between a sum of any elements within input array and target
+
+//create output and initialize it to infinity
+//create a helper/recursive function takes in 2 args (targert, index)
+  //if index === nums.length 
+    //reinitialize output to the smaller between output and target
+    //return
+  //recursion on helper
+    //"take it"
+    //leave it
+//call helper
+//return output
+
 const subsetSumClosest = (nums, target) => {
-  
+  let output = Infinity;
+  const helper = (target, index) => {
+    if (index === nums.length) {
+      output = Math.min(Math.abs(target), output);
+      return;
+    }
+    helper(target - nums[index], index + 1);
+    helper(target, index + 1);
+  }
+  helper(target, 0);
+  return output;
 };
 
 /*
@@ -69,8 +95,36 @@ A solution set is:
 
 */
 
+//declarer and initialize to const variables to empty arrays (output and current)
+//create a recursive helper function (target, index)
+  //if target === 0 push a of current into output and return
+  //if index === nums length or nums[index] is greater than target return
+
+  //push into current nums[index]
+  //helper function (target - nums[index], index) = logic for calculations 
+  //pop current
+  //helper (target, index + 1) = moving the index along
+
+//call helper func
+//return output
+
 const generateCombinations = (nums, target) => {
-  
+  const current = [], output = []
+
+  const helper = (target, index) => {
+    //if subsets match then push
+    if (target === 0) output.push(current.slice());
+    //if subsets will not match
+    if (index === nums.length || nums[index] > target) return;
+
+    //recursion time to find out combos that match
+    current.push(nums[index]);
+    helper(target - nums[index], index);
+    current.pop();
+    helper(target, index + 1);
+  }
+  helper(target, 0);
+  return output;
 };
 
 module.exports = {subsetSumClosest, generateCombinations};

@@ -28,7 +28,7 @@ describe('subsetSumClosest test', () => {
   });
 });
 
-xdescribe('generateCombinations test', () => {
+describe('generateCombinations test', () => {
   const normalize = subsets => subsets.sort();
   let arr, solution;
   
