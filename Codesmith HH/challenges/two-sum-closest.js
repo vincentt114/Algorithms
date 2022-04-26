@@ -26,9 +26,38 @@ O(n) time.
 
 */
 
+//input array, integer
+//output integer
+  //where output integer are the sum of 2 elements in input array that are closest to input integer
+
+//create a copy of input array and sort it
+
+//create 2 pointers
+//create output being target - (elements pointers looking at summed)
+  //while loop
+    //logic
+      //if output === target then return output
+    //if 2 pointer elements sum is greater than then subtract 1 from bigger pointer
+    //if 2 pointer elements sum is lesser than then add 1 to smaller pointer
+
 const twoSumClosest = (nums, target) => {
   
+  const arr = nums.sort((a, b) => a - b)
+  
+  let i = 0;
+  let j = nums.length - 1;
+  let closest = Infinity;
+
+  while (i < j) {
+    const current = arr[i] + arr[j];
+    if (Math.abs(current - target) < Math.abs(closest - target)) closest = current;
+    if (current > target) j--;
+    else i++;
+  }
+
+  return closest
 };
 
+console.log(twoSumClosest([3, 1, 4, 3], 6))
 module.exports = {twoSumClosest};
 
