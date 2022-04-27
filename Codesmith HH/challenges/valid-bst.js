@@ -33,6 +33,16 @@
 
 */
 
+//input bst head
+//output boolean
+
+//recursion
+//introduce 2 additional parameters (min and max) and set them to -/+ Infinity
+  //base case if tree is falsy return true
+  //edge cases if value is less than min or greater than max return false
+  //return function 2x
+    //for left -> min is value
+    //for right -> max is value
 
 function BinaryTree(value) {
   this.value = value;
@@ -40,8 +50,13 @@ function BinaryTree(value) {
   this.right = null;
 }
 
-const validBST = tree => {
-
-}
+const validBST = (tree, min = -Infinity, max = Infinity) => {
+  if (!tree) return true;
+  if (tree.value < min || tree.value > max) return false;
+  return (
+    validBST(tree.left, min, tree.value) &&
+    validBST(tree.right, tree.value, max)
+  )
+};
 
 module.exports = { BinaryTree, validBST };
