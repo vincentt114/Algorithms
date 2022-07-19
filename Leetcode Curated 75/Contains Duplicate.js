@@ -1,5 +1,7 @@
 // Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
 
+ 
+
 // Example 1:
 
 // Input: nums = [1,2,3,1]
@@ -19,24 +21,25 @@
 // 1 <= nums.length <= 105
 // -109 <= nums[i] <= 109
 
-/**
- * @param {number[]} nums
- * @return {boolean}
- */
-//input array 
+//input array of integers
 //output boolean
-    //true if an element appears at least 2x in nums
+
+//WHERE if
+  //the array contains at least 2 instance of the same lement return true
+  //else return false if all elements are unique
 
 //create a cache
-//iteriate through the input array
-    //fill out the cache so that if the element is the key and its appearance amount is the value
-        //if value 2x then return true
-//return false
+  //iteriate thorugh array
+    //fill out cache
+    //if existing return true
+  //return false
 var containsDuplicate = function(nums) {
-  const cache = {};
-  for (let i = 0; i < nums.length; i++) {
-      if (cache[nums[i]]) return true;
-      else cache[nums[i]] = 1;
-  }
-  return false;
+    const cache = {};
+    for (let i = 0; i < nums.length; i++) {
+      if (!cache[nums[i]]) cache[nums[i]] = 'count'
+      else return true;
+    }
+    return false;
 };
+
+console.log(containsDuplicate([1,2,3]))
