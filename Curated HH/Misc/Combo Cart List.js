@@ -58,4 +58,4 @@ const combo = (array, k) => {
   return hold
 }
 
-console.log(combo([2, 4, 5, -1, -2, -3, -4, -9, -9, -45], 3))
+console.log(combo([3, 2, 1, 1000], 4))
